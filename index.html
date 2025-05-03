@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>써포텔 캐릭터 선택</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #ffffff;
+      font-family: 'Inter', sans-serif;
+    }
+
+    h1 {
+      margin-bottom: 40px;
+      font-size: 2rem;
+      color: #333;
+    }
+
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 80%;
+      max-width: 400px;
+    }
+
+    .chat-button {
+      padding: 15px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .chat-button:hover {
+      transform: scale(1.05);
+    }
+
+    .summer {
+      background-color: #f5e663;
+      color: white;
+    }
+
+    .popo {
+      background-color: #dda6ff;
+      color: white;
+    }
+
+    .telly {
+      background-color: #8bd3ff;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>써포텔 캐릭터를 선택하세요</h1>
+  <div class="button-container">
+    <button class="chat-button summer" onclick="location.href='https://cdn.botpress.cloud/webchat/v2.4/shareable.html?configUrl=https://files.bpcontent.cloud/2025/04/28/08/20250428080220-KG757VST.json'">써머 (Summer)</button>
+    <button class="chat-button popo" onclick="location.href='https://cdn.botpress.cloud/webchat/v2.4/shareable.html?configUrl=https://files.bpcontent.cloud/2025/04/12/08/20250412083650-B9OG8S56.json'">포포 (Popo)</button>
+    <button class="chat-button telly" onclick="location.href='https://cdn.botpress.cloud/webchat/v2.4/shareable.html?configUrl=https://files.bpcontent.cloud/2025/04/28/08/20250428081358-FH5V3KAJ.json'">텔리 (Telly)</button>
+  </div>
+</body>
+</html>
