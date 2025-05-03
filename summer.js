@@ -34,4 +34,21 @@ function sendMessage() {
       appendMessage("bot", "Oops! Something went wrong.");
     });
     */
+
+  function getBotReply(text) {
+  text = text.toLowerCase();
+
+  if (text.includes("hi") || text.includes("hello")) {
+    return "Heeey cutie~! ☀️ I'm Summer and I'm SO glad you're here!";
+  }
+  if (text.includes("sad")) {
+    return "Nooo! Don't be sad 😢 Let's dance in the sun together!";
+  }
+  if (text.includes("idea") || text.includes("what should I do")) {
+    return "Try something FUN today! Like drawing a bunny or eating a lemon tart! 🍋🐰";
+  }
+
+  return "Hmm... I didn't get that, but I still think you're adorable 💕";
+}
+
 }
