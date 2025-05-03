@@ -16,21 +16,30 @@ h2 {
   padding: 10px;
 }
 
-.user-msg {
+.user, .bot {
+  margin: 8px 0;
+  padding: 10px 15px;
+  border-radius: 15px;
+  max-width: 70%;
+}
+
+.user {
   background-color: #ffe0b2;
   text-align: right;
   margin-left: auto;
-  margin-top: 8px;
-  padding: 10px 15px;
-  border-radius: 15px;
-  max-width: 70%;
 }
 
-.bot-msg {
+.bot {
   background-color: #ffecb3;
-  margin-top: 8px;
-  padding: 10px 15px;
-  border-radius: 15px;
-  max-width: 70%;
 }
 
+@media (max-width: 600px) {
+  #chatbox {
+    height: 300px;
+    font-size: 14px;
+  }
+  input, button {
+    width: 100%;
+    margin-top: 5px;
+  }
+}
