@@ -1,7 +1,6 @@
 const chatbox = document.getElementById("chatbox");
 
 function appendMessage(sender, text) {
-  const chatbox = document.getElementById("chatbox");
   const msg = document.createElement("div");
   msg.className = sender === "user" ? "user-msg" : "bot-msg";
   msg.innerText = text;
@@ -52,8 +51,19 @@ async function sendMessage() {
     });
 
     const msgData = await sendMsgRes.json();
+    console.log("Response from bot:", msgData);
+
     const firstResponse = msgData.responses?.[0];
-    const botReply = firstResponse?.payload?.text || "봇이 아직 대답을 준비 못 했어요!";
+    if (!firstResponse) {
+      appendMessage("bot", "응답이 도착하지 않았어요! 🥺");
+      return;
+    }
+
+    const botReply = firstResponse.payload?.text || "봇이 아직 대답을 준비 못 했어요!";
     appendMessage("bot", botReply);
 
+  } catch (err) {
+    console.error(err);
+    appendMessage("bot", "오류가 발생했어요! 😭");
+  }
 }
