@@ -19,14 +19,12 @@ async function sendMessage() {
   const webhookId = "60367599-a0f5-4a89-996a-fb9e8e0914a4";
 
   try {
-    const createUserRes = await fetch(`https://chat.botpress.cloud/${webhookId}/users`, {
-      method: "POST",
-    });
-    const userData = await createUserRes.json();
-    const userId = userData.id;
-    const userKey = userData.userKey;
+    // 1. userId / userKey 임시 설정 (테스트용)
+    const userId = "test-user-id";
+    const userKey = "test-user-key"; // Botpress에서 UserKey 발급받은 값 or 고정 키 사용 필요
 
-    const createConvRes = await fetch(`https://chat.botpress.cloud/${webhookId}/conversations`, {
+    // 2. 대화 생성
+    const convRes = await fetch(`https://chat.botpress.cloud/${webhookId}/conversations`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -34,10 +32,11 @@ async function sendMessage() {
       },
       body: JSON.stringify({ userId })
     });
-    const convData = await createConvRes.json();
+    const convData = await convRes.json();
     const conversationId = convData.id;
 
-    const sendMsgRes = await fetch(`https://chat.botpress.cloud/${webhookId}/messages`, {
+    // 3. 메시지 전송 (여기서 배열로 보냄!)
+    const msgRes = await fetch(`https://chat.botpress.cloud/${webhookId}/messages`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -45,12 +44,16 @@ async function sendMessage() {
       },
       body: JSON.stringify({
         conversationId,
-        type: "text",
-        payload: message
+        messages: [
+          {
+            type: "text",
+            text: message
+          }
+        ]
       })
     });
 
-    const msgData = await sendMsgRes.json();
+    const msgData = await msgRes.json();
     console.log("Response from bot:", msgData);
 
     const firstResponse = msgData.responses?.[0];
