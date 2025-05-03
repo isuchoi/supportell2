@@ -16,7 +16,7 @@ h2 {
   padding: 10px;
 }
 
-.user, .bot {
+.user-msg, .bot-msg {
   margin: 8px 0;
   padding: 10px 15px;
   border-radius: 15px;
