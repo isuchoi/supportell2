@@ -9,6 +9,7 @@ function appendMessage(sender, text) {
   chatbox.scrollTop = chatbox.scrollHeight;
 }
 
+/*
 function sendMessage() {
   const userInput = document.getElementById("userInput");
   const message = userInput.value.trim();
@@ -32,4 +33,5 @@ function sendMessage() {
       console.error("Error:", error);
       appendMessage("bot", "Oops! Something went wrong.");
     });
+    */
 }
