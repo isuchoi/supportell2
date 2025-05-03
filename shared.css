@@ -23,23 +23,12 @@ h2 {
   max-width: 70%;
 }
 
-.user {
+.user-msg {
   background-color: #ffe0b2;
   text-align: right;
   margin-left: auto;
 }
 
-.bot {
+.bot-msg {
   background-color: #ffecb3;
-}
-
-@media (max-width: 600px) {
-  #chatbox {
-    height: 300px;
-    font-size: 14px;
-  }
-  input, button {
-    width: 100%;
-    margin-top: 5px;
-  }
 }
