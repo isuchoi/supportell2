@@ -17,7 +17,7 @@ async function sendMessage() {
   appendMessage("user", message);
   userInput.value = "";
 
-  const webhookId = "b8bd27f2-94bd-4b93-8de7-ea0b514c7f30";
+  const webhookId = "60367599-a0f5-4a89-996a-fb9e8e0914a4";
 
   try {
     const createUserRes = await fetch(`https://chat.botpress.cloud/${webhookId}/users`, {
