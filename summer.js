@@ -8,33 +8,7 @@ function appendMessage(sender, text) {
   chatbox.appendChild(msg);
   chatbox.scrollTop = chatbox.scrollHeight;
 }
-
-/*
-function sendMessage() {
-  const userInput = document.getElementById("userInput");
-  const message = userInput.value.trim();
-  if (!message) return;
-
-  appendMessage("user", message); // 사용자 메시지 추가
-  userInput.value = "";
-
-  fetch("https://supportell2.vercel.app/api/chat", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({ message })
-  })
-    .then(response => response.json())
-    .then(data => {
-      appendMessage("bot", data.reply); // GPT의 응답 표시
-    })
-    .catch(error => {
-      console.error("Error:", error);
-      appendMessage("bot", "Oops! Something went wrong.");
-    });
-    */
-
+  /*
   function getBotReply(text) {
   text = text.toLowerCase();
 
@@ -50,5 +24,37 @@ function sendMessage() {
 
   return "Hmm... I didn't get that, but I still think you're adorable 💕";
 }
+*/
 
+async function sendMessage() {
+  const userInput = document.getElementById("userInput");
+  const message = userInput.value.trim();
+  if (!message) return;
+
+  appendMessage("user", message);
+  userInput.value = "";
+
+  try {
+    const response = await fetch("https://bots.botpress.cloud/v1/chat/messages", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer YOUR_TOKEN_HERE" // 여기에 복사한 토큰 넣기!
+      },
+      body: JSON.stringify({
+        botId: "애기 봇 ID (예: supportell-summer)",
+        userId: "user_" + Math.random().toString(36).substring(7), // 고유 ID 생성
+        type: "text",
+        payload: message
+      })
+    });
+
+    const data = await response.json();
+    const botReply = data.responses[0]?.payload?.text || "응답이 없어요!";
+    appendMessage("bot", botReply);
+
+  } catch (err) {
+    console.error(err);
+    appendMessage("bot", "오류가 발생했어요!");
+  }
 }
